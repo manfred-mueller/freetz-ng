@@ -37,35 +37,35 @@ jobs:
        run: locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale
 
      - name: clone
-        env:
+       env:
           GITHUB_TOKEN: ${{ secrets.FREETZ_TOKEN }}
-        run: |
+       run: |
           umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
-      - name: tools
-        run: |
+     - name: tools
+       run: |
           echo 'FREETZ_USER_LEVEL_EXPERT=y\nFREETZ_HOSTTOOLS_DOWNLOAD=y\nFREETZ_DL_SITE_USER="https://raw.githubusercontent.com/Freetz-NG/dl-mirror/master"' > .config
           mkdir -p dl/ 2>/dev/null || true
           useradd freetz -s $(which bash) -d $(pwd) -M && chown freetz . -R
           su freetz -c "umask 0022 && make olddefconfig && make tools"
 
-      - name: generate
-        env:
+     - name: generate
+       env:
           ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
-        run: |
+       run: |
           export LANG=en_US.utf8
           mkdir -p ~/.freetz-props/ 2>/dev/null || true
           mkdir -p ~/.freetz-dl/fw/ 2>/dev/null || true
           FREETZ_ENABLEG=true config/.img/generate.sh
           rm -f ".wget-hsts" || true
 
-      - name: commit
-        env:
+     - name: commit
+       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
+       run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git pull
           git add .
