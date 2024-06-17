@@ -64,7 +64,7 @@ jobs:
 
      - name: commit
        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.FREETZ_TOKEN }}
        run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git pull
