@@ -1,0 +1,57 @@
+name: Build 7590 image
+
+on:
+  push:
+    branches: [ "master" ]
+    tags:
+      - "v*"
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: tools/prerequisites install -y
+
+    - name: Configure
+      run: |
+        cat config7590 > .config
+        make oldconfig
+
+    - name: Build
+      run: make
+
+    - name: Find IMAGE_PATH
+      id: find_image_path
+      run: |
+        image_path=$(find ${{ github.workspace }} -name "*.image" -type f | grep 7590)
+        echo "IMG_PATH=$image_path" >> $GITHUB_ENV
+        asset_path=$(basename "$image_path")
+        echo "ASSET_PATH=$asset_path" >> $GITHUB_ENV
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ${{ env.IMG_PATH }}
+        asset_name: ${{ env.ASSET_PATH }}
+        asset_content_type: application/zip
