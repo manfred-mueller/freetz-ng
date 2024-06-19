@@ -48,7 +48,8 @@ jobs:
     - name: Find IMAGE_PATH
       id: find_image_path
       run: |
-        image_path=$(find ${{ github.workspace }} -name "*.image" -type f | grep 7590)
+        image_path=`find ${{ github.workspace }} -name "*.image" -type f | grep 7590`
+        export IMG_PATH=$image_path
         echo "IMG_PATH=$image_path" >> $GITHUB_ENV
         asset_path=$(basename "$image_path")
         echo "ASSET_PATH=$asset_path" >> $GITHUB_ENV
