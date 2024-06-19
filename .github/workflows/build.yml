@@ -26,6 +26,15 @@ jobs:
 
     - name: make
       run: make
+    - name: Find IMAGE_PATH
+      run: |
+            image_path=`find ${{ github.workspace }} -name "*.image" -type f`
+            export IMG_PATH=$image_path
+            echo "IMG_PATH=$image_path" >> $GITHUB_ENV
+            find ${{ github.workspace }} -name "*.image" -type f
+            asset_path=`basename ${{ env.IMG_PATH }}`
+            echo "ASSET_PATH=$asset_path" >> $GITHUB_ENV
+      id: find_image_path
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -43,6 +52,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: images/7590*.image
-          asset_name: 7590-image.zip
+          asset_path: ${{ env.IMG_PATH }}
+          asset_name: ${{ env.ASSET_PATH }}
           asset_content_type: application/zip
