@@ -28,10 +28,10 @@ jobs:
       run: make
     - name: Find IMAGE_PATH
       run: |
-            image_path=`find ${{ github.workspace }} -name "*.image" -type f`
+            image_path=`find ${{ github.workspace }} -name "*.image" -type f | grep _freetz-ng`
             export IMG_PATH=$image_path
             echo "IMG_PATH=$image_path" >> $GITHUB_ENV
-            find ${{ github.workspace }} -name "*.image" -type f
+            find ${{ github.workspace }} -name "*.image" -type f | grep _freetz-ng
             asset_path=`basename ${{ env.IMG_PATH }}`
             echo "ASSET_PATH=$asset_path" >> $GITHUB_ENV
       id: find_image_path
