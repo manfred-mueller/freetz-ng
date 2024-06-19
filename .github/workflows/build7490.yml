@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Build 7490 image
 
 on:
   push:
