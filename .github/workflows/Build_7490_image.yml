@@ -33,7 +33,7 @@ jobs:
       
     - name: Configure
       run: |
-        cat config7490 > .config
+        cat .config7490 > .config
         make oldconfig
     - name: Cache build output
       id: cache-build
