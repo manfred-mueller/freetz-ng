@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_VLMCSDSETUP
+	bool "VLMCSD-Setup 0.0.1 (binary only)"
+	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select VLMCSD
+	default n
+	help
+		A utility to make the setup of vlmcsd easier.
+
