@@ -8,19 +8,19 @@
 # any tracked files which get ignored after the change.
 #
 
-/.config*
+#/.config*
 /.fakeroot-cache
 /.fwmod_custom
-/.packages
+#/.packages
 /.signature
 /.tmpcache.*
 /*.log
 /build
-/dl
+#/dl
 /images
 /kernel
-/packages
-/source
+#/packages
+#/source
 /toolchain
 
 # ignore eclipse project files
