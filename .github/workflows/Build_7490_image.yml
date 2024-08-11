@@ -9,9 +9,9 @@ on:
         description: 'Board'
         required: true
         options:
-        - ${{ fromJSON(7490) }}
-        - ${{ fromJSON(7590) }}
-        default: ${{ fromJSON(7590) }}
+        - config7490
+        - config7590
+        default: config7590
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
       
     - name: Configure
       run: |
-        cat .config${{inputs.build_board}} > .config
+        cat .${{inputs.build_board}} > .config
         make oldconfig
     - name: Cache build output
       id: cache-build
