@@ -1,12 +1,17 @@
-name: Build 7490 image
+name: Build 7490/7590 image
 
-on: workflow_dispatch
-#  push:
-#    branches: [ "master" ]
-#    tags:
-#      - "v*"
-#  pull_request:
-#    branches: [ "master" ]
+on: 
+  workflow_dispatch:
+    inputs:
+
+      build_board:
+        type: choice
+        description: 'Board'
+        required: true
+        options:
+        - ${{ fromJSON(7490) }}
+        - ${{ fromJSON(7590) }}
+        default: ${{ fromJSON(7590) }}
 
 jobs:
   build:
@@ -33,7 +38,7 @@ jobs:
       
     - name: Configure
       run: |
-        cat .config7490 > .config
+        cat .config${{inputs.build_board}} > .config
         make oldconfig
     - name: Cache build output
       id: cache-build
