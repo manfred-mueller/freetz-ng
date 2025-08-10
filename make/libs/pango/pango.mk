@@ -1,4 +1,5 @@
 $(call PKG_INIT_LIB, 1.56.3)
+## Version 1.56.4 requires GLib 2.82
 $(PKG)_LIB_VERSION:=0.5600.3
 $(PKG)_MAJOR_VERSION:=1.0
 $(PKG)_SOURCE:=pango-$($(PKG)_VERSION).tar.xz

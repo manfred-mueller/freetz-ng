@@ -30,13 +30,13 @@ $(PKG)_COPTS := -DCONFFILE=\\\"/mod/etc/dnsmasq.conf\\\"
 $(PKG)_COPTS += -DRUNFILE=\\\"/var/run/dnsmasq/dnsmasq.pid\\\"
 $(PKG)_COPTS += -DLEASEFILE=\\\"/var/tmp/dnsmasq.leases\\\"
 $(PKG)_COPTS += -DNO_INOTIFY
-ifeq ($(FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_DNSMASQ_VERSION_ABANDON)),y)
 $(PKG)_COPTS += -DNO_IPV6
 endif
-ifeq ($(FREETZ_AVM_HAS_MULTID_LEASES_FORMAT_V2),y)
+ifeq ($(strip $(FREETZ_AVM_HAS_MULTID_LEASES_FORMAT_V2)),y)
 $(PKG)_COPTS += -DMULTID_LEASES_FORMAT_V2
 endif
-ifeq ($(FREETZ_PACKAGE_DNSMASQ_WITH_DNSSEC),y)
+ifeq ($(strip $(FREETZ_PACKAGE_DNSMASQ_WITH_DNSSEC)),y)
 $(PKG)_DEPENDS_ON += nettle
 $(PKG)_COPTS += -DHAVE_DNSSEC -DHAVE_DNSSEC_STATIC
 endif

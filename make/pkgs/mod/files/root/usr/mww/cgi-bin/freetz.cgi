@@ -62,6 +62,8 @@ JBBgameich
 Jens
 jer194
 johnbock
+JörgBerkel
+kamasudo
 kriegaex
 L3P3
 leo22
@@ -79,6 +81,7 @@ MaxMuster
 maz
 McBane87
 McNetic
+michael0815000
 MichaelHeimpold
 mickey
 mike

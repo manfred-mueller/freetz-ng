@@ -21,7 +21,7 @@ jobs:
 #     image: freetzng/generate
       image: ghcr.io/freetz-ng/generate
     runs-on: ubuntu-latest
-    if: github.repository == 'freetz-ng/freetz-ng'
+#   if: github.repository == 'freetz-ng/freetz-ng'
 
     steps:
 
@@ -65,6 +65,10 @@ jobs:
           [ "${{ github.workflow }}" != "${{ steps.key.outputs.key }}" ] && c=5 || c=1
           seq $c | while read x; do docs/juis/generate.sh; done
 
+      - name: censorship
+        if: github.repository_owner == 'freetz-ng'
+        run: sed 's,\.avm\.de/,.example.com/,' -i docs/juis/README.md
+
       - name: commit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,8 +77,8 @@ jobs:
           git pull
           git add .
           git status
-          git config --local user.name github-actions
-          git config --local user.email github-actions@github.com
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
           git diff --cached --quiet && exit 0 || git commit -m "juis: automatic update"
           git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
           git push origin $GITHUB_REF_NAME

@@ -13,7 +13,7 @@ $(PKG)_SITE:=https://github.com/htop-dev/htop/releases/download/$($(PKG)_VERSION
 $(PKG)_BINARY:=$($(PKG)_DIR)/htop
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/htop
 
-ifeq ($(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON)),y)
 $(PKG)_DEPENDS_ON += python2-host
 endif
 $(PKG)_DEPENDS_ON += ncurses
@@ -22,7 +22,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_HTOP_VERSION_ABANDON
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),abandon,current)
 
-ifeq ($(FREETZ_PACKAGE_HTOP_VERSION_ABANDON),y)
+ifeq ($(strip $(FREETZ_PACKAGE_HTOP_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_file__proc_stat=yes
 $(PKG)_CONFIGURE_ENV += ac_cv_file__proc_meminfo=yes
 
