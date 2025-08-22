@@ -93,13 +93,14 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - HWR 262: [FRITZ.Box_6850_LTE-08.10-123332-LabBETA.image](http://download.avm.de/labor/Smart24P2/6850LTE/FRITZ.Box_6850_LTE-08.10-123332-LabBETA.image)
   - HWR 267: [FRITZ.Box_6690_Cable-08.10-123840-LabBETA.image](http://download.avm.de/labor/Smart24P2/6690Cable/FRITZ.Box_6690_Cable-08.10-123840-LabBETA.image)
   - HWR 271: [FRITZ.Box_7510-08.10-123537-LabBETA.image](http://download.avm.de/labor/Smart24P2/7510/FRITZ.Box_7510-08.10-123537-LabBETA.image)
+  - HWR 272: [FRITZ.Box_5590_Fiber-08.10-123849-LabBETA.image](http://download.avm.de/labor/Smart24P2/5590Fiber/FRITZ.Box_5590_Fiber-08.10-123849-LabBETA.image)
   - HWR 276: [FRITZ.Box_7520_B-08.10-123545-LabBETA.image](http://download.avm.de/labor/Smart24P2/7520B/FRITZ.Box_7520_B-08.10-123545-LabBETA.image)
 
 ### FOS-Inhaus
   - HWR 226: [FRITZ.Box_7590-08.20-123769-Inhaus.image](http://download.avm.de/inhaus/Smart24P2NL1/7590/FRITZ.Box_7590-08.20-123769-Inhaus.image)
   - HWR 227: [FRITZ.Box_4040-08.00-117598-Inhaus.image](http://download.avm.de/inhaus/Smart24P1NL1/4040/FRITZ.Box_4040-08.00-117598-Inhaus.image)
   - HWR 229: [FRITZ.Powerline_1260E-08.10-123226-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/1260E/FRITZ.Powerline_1260E-08.10-123226-Inhaus.image)
-  - HWR 236: [FRITZ.Box_7530-08.10-123804-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/7530/FRITZ.Box_7530-08.10-123804-Inhaus.image)
+  - HWR 236: [FRITZ.Box_7530-08.10-123875-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/7530/FRITZ.Box_7530-08.10-123875-Inhaus.image)
   - HWR 240: [FRITZ.Repeater_600-07.57-111452-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/600/FRITZ.Repeater_600-07.57-111452-Inhaus.image)
   - HWR 247: [FRITZ.Box_7520-08.10-123540-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/7520/FRITZ.Box_7520-08.10-123540-Inhaus.image)
   - HWR 249: [FRITZ.Powerline_1260-08.10-123224-Inhaus.image](http://download.avm.de/inhaus/Smart24P2/1260/FRITZ.Powerline_1260-08.10-123224-Inhaus.image)
@@ -153,4 +154,4 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
   - MHW 08.03: [08.03.05.11.avm.de.upd](http://download.avm.de/dect/0803/smart24p1/08.03.05.11.avm.de.upd)
 
 ### BPjM
-  - CRC 60aefac3: [bpjm.data](http://download.avm.de/bpjm/281158/bpjm.data)
+  - CRC c4118afb: [bpjm.data](http://download.avm.de/bpjm/283039/bpjm.data)
